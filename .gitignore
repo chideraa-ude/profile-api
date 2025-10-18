@@ -3,6 +3,7 @@
 
 # Log files
 *.log
+HELP.md
 
 # Package File
 *.jar
