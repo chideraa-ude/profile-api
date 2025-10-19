@@ -1586,4 +1586,4 @@ You now have a fully functional, production-ready deployment of your Spring Boot
 - Configure automated backups
 - Set up CI/CD pipeline
 
-For questions or issues, please open an issue on the [GitHub repository](https://github.com/yourusername/profile-api/issues).
+For questions or issues, please open an issue on the [GitHub repository](https://github.com/chideraa-ude/profile-api/issues).
