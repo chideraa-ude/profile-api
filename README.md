@@ -285,19 +285,17 @@ If you prefer a Platform-as-a-Service (PaaS) approach with less infrastructure m
 - **Google Cloud Run**: Serverless container deployment
 - **Heroku**: Classic PaaS (paid plans only)
 
-See [DEPLOYMENT_ALTERNATIVES.md](DEPLOYMENT_ALTERNATIVES.md) for guides on these platforms.
-
 ### Support & Troubleshooting
 
 If you encounter issues during deployment:
 
-1. Check the [DEPLOYMENT.md](DEPLOYMENT.md) troubleshooting section
+1. Check the [DEPLOYMENT.md](https://github.com/chideraa-ude/profile-api/blob/main/DEPLOYMENT.md) troubleshooting section
 2. Review application logs: `sudo journalctl -u profile-api -n 100`
 3. Check NGINX logs: `sudo tail -100 /var/log/nginx/error.log`
 4. Verify security group allows traffic on port 80
 5. Ensure application is running: `sudo systemctl status profile-api`
 
-For additional help, please [open an issue](https://github.com/yourusername/profile-api/issues) on GitHub.
+For additional help, please [open an issue](https://github.com/chideraa-ude/profile-api/issues) on GitHub.
 
 ---
 
