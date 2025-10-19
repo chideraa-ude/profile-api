@@ -1875,7 +1875,7 @@ These are the skills that distinguish junior developers from those ready for pro
 
 ---
 
-*For detailed troubleshooting, backup procedures, and advanced configurations, see the complete [DEPLOYMENT.md](https://github.com/yourusername/profile-api/blob/main/DEPLOYMENT.md) in the repository.*
+*For detailed troubleshooting, backup procedures, and advanced configurations, see the complete [DEPLOYMENT.md](https://github.com/chideraa-ude/profile-api/DEPLOYMENT.md) in the repository.*
 
 ---
 
