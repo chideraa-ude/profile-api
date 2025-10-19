@@ -8,7 +8,7 @@ By the end of this article, you'll have built and deployed a fully functional AP
 
 **What we'll build:** A RESTful endpoint that returns JSON-formatted profile data combined with random cat facts from an external API, deployed to a cloud platform for public access.
 
-[IMAGE_PLACEHOLDER: Final API response in browser/Postman showing the JSON output]
+![Final API response in browser showing the JSON output](./profile-api-images/FinalAPIResponse.PNG "Final API response in browser showing the JSON output")
 
 ---
 
@@ -98,7 +98,7 @@ Before we begin, ensure you have:
 
 4. **Git** for version control
 
-[IMAGE_PLACEHOLDER: Screenshot of successful Java and Maven version checks in terminal]
+![Successful Java and Maven version checks in terminal](./profile-api-images/JavaAndMvn.PNG "Successful Java and Maven version checks in terminal")
 
 ---
 
@@ -125,7 +125,7 @@ Spring Initializr is a web-based tool that generates Spring Boot project skeleto
 
 4. Click **Generate** and extract the downloaded zip file
 
-[IMAGE_PLACEHOLDER: Screenshot of Spring Initializr with correct configurations]
+![Spring Initializr with correct configurations](./profile-api-images/SpringInitializr.PNG "Spring Initializr with correct configurations")
 
 ### Understanding the Generated Structure
 
@@ -204,7 +204,7 @@ public class ProfileResponse {
 **Jackson Annotations** (control JSON serialization):
 - `@JsonProperty("user")`: Maps the `user` field to the JSON key
 
-[IMAGE_PLACEHOLDER: Screenshot showing the ProfileResponse.java file in your IDE]
+![ProfileResponse.java](./profile-api-images/ProfileResponse.PNG "ProfileResponse.java")
 
 ---
 
@@ -285,7 +285,7 @@ public class CatFactService {
 
 **4. JSON Parsing**: We use Jackson's `ObjectMapper` to parse the JSON response and extract the `fact` field.
 
-[IMAGE_PLACEHOLDER: Screenshot of CatFactService.java in your IDE]
+![CatFactService.java](./profile-api-images/CatFactService.PNG "CatFactService.java")
 
 ---
 
@@ -365,7 +365,7 @@ userInfo.setName("Your Full Name");
 userInfo.setStack("Java/Spring Boot");
 ```
 
-[IMAGE_PLACEHOLDER: Screenshot of ProfileController.java]
+![ProfileController.java](./profile-api-images/ProfileController.PNG "ProfileController.java")
 
 ---
 
@@ -445,7 +445,7 @@ Expected response:
 }
 ```
 
-[IMAGE_PLACEHOLDER: Screenshot of successful API response in Postman or browser]
+![Successful API response in browser](./profile-api-images/LocalHost.PNG "Successful API response in browser")
 
 ---
 
@@ -571,7 +571,7 @@ Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
 ```
 
-[IMAGE_PLACEHOLDER: Screenshot of successful test execution]
+![Successful test execution](./profile-api-images/SuccessfulTest.PNG "Successful test execution")
 
 ---
 
@@ -657,8 +657,6 @@ Before we deploy, let's understand what we're building:
 - **Performance**: NGINX efficiently serves static content
 - **Flexibility**: Easy to add caching, load balancing, multiple apps
 
-[IMAGE_PLACEHOLDER: Architecture diagram showing the complete flow]
-
 ---
 
 ## Part 1: Setting Up AWS EC2
@@ -674,7 +672,7 @@ Before we deploy, let's understand what we're building:
 7. Select "Free" support plan
 
 **Free Tier Benefits:**
-- 750 hours/month of t2.micro instance (12 months)
+- 750 hours/month of t3.micro instance (12 months)
 - 30 GB of EBS storage
 - 15 GB data transfer out
 
@@ -690,7 +688,7 @@ Before we deploy, let's understand what we're building:
 
 4. **Click "Launch Instance"**
 
-[IMAGE_PLACEHOLDER: AWS Console showing EC2 Dashboard]
+![AWS Console showing EC2](./profile-api-images/EC2Dashboard.PNG "AWS Console showing EC2")
 
 ### Step 1.3: Configure Your Instance
 
@@ -714,11 +712,11 @@ Environment: production
 - Large community support
 - Widely used in production
 
-[IMAGE_PLACEHOLDER: Selecting Ubuntu AMI]
+![Selecting Ubuntu AMI](./profile-api-images/UbuntuAMi.PNG "Selecting Ubuntu AMI")
 
 #### Instance Type
 
-**Select:** `t2.micro`
+**Select:** `t3.micro`
 
 **Specifications:**
 - 1 vCPU
@@ -727,8 +725,8 @@ Environment: production
 - **Free tier eligible** ✅
 
 This is sufficient for a demo/portfolio project. For production with higher traffic, consider:
-- t2.small (2 GB RAM)
-- t2.medium (4 GB RAM)
+- t3.small (2 GB RAM)
+- t3.medium (4 GB RAM)
 
 #### Key Pair (Critical Step!)
 
@@ -756,8 +754,6 @@ mv ~/Downloads/profile-api-key.pem ~/.ssh/
 chmod 400 ~/.ssh/profile-api-key.pem
 ```
 
-[IMAGE_PLACEHOLDER: Key pair creation dialog]
-
 #### Network Settings
 
 This is crucial for security and accessibility.
@@ -783,7 +779,7 @@ Create a new security group: `profile-api-sg`
 - **Port 80 (HTTP)**: For your API access
 - **Port 443 (HTTPS)**: For SSL-encrypted API access
 
-[IMAGE_PLACEHOLDER: Security group configuration]
+![Security group configuration](./profile-api-images/SecurityGroup.PNG "Security group configuration")
 
 #### Storage
 
@@ -802,7 +798,7 @@ For a production app with logs and data, consider 16-20 GB.
 
 **Important:** This IP address is how you'll access your server. Write it down!
 
-[IMAGE_PLACEHOLDER: Running EC2 instance with public IP highlighted]
+![Running EC2 instance](./profile-api-images/PublicIP.PNG "Running EC2 instance")
 
 ---
 
@@ -844,7 +840,7 @@ ubuntu@ip-172-31-45-67:~$
 
 You're now inside your EC2 server! 🎉
 
-[IMAGE_PLACEHOLDER: Successful SSH connection screenshot]
+![SSH connection](./profile-api-images/SSHLogin.PNG "SSH connection")
 
 **Windows (PuTTY):**
 
@@ -947,8 +943,6 @@ http://54.123.45.67
 
 You should see the **"Welcome to nginx!"** page. This confirms NGINX is working and accessible from the internet.
 
-[IMAGE_PLACEHOLDER: Default NGINX welcome page in browser]
-
 **Understanding systemctl commands:**
 - `start`: Start the service now
 - `stop`: Stop the service
@@ -1024,8 +1018,6 @@ scp -i ~/.ssh/profile-api-key.pem \
 - `-i`: Specify key file
 - Source: Your local JAR file
 - Destination: EC2 instance home directory
-
-[IMAGE_PLACEHOLDER: Terminal showing successful SCP transfer]
 
 #### Option B: Using Git (Recommended for Updates)
 
@@ -1139,7 +1131,7 @@ curl http://localhost:8080/me
 
 **Stop the test:** Go back to the first terminal and press `Ctrl+C`
 
-[IMAGE_PLACEHOLDER: Successful curl test showing JSON response]
+![Curl test showing JSON response](./profile-api-images/SuccessfulCurl.PNG "Curl test showing JSON response")
 
 ### Step 4.4: Create systemd Service
 
@@ -1270,8 +1262,6 @@ sudo journalctl -u profile-api --since "1 hour ago"
 ```
 
 Press `Ctrl+C` to exit real-time logs.
-
-[IMAGE_PLACEHOLDER: journalctl output showing application logs]
 
 ---
 
@@ -1406,9 +1396,6 @@ sudo systemctl restart nginx
 # Verify NGINX is running
 sudo systemctl status nginx
 ```
-
-[IMAGE_PLACEHOLDER: Successful NGINX restart]
-
 ---
 
 ## Part 6: Testing Your Deployed API
@@ -1437,7 +1424,7 @@ Replace `54.123.45.67` with your actual EC2 public IP.
 }
 ```
 
-[IMAGE_PLACEHOLDER: Browser showing successful API response]
+![Successful API response on browser](./profile-api-images/FinalAPIResponse.PNG "Successful API response on browser")
 
 ### Test with curl
 
@@ -1452,8 +1439,6 @@ curl http://54.123.45.67/me
 3. Enter URL: `http://54.123.45.67/me`
 4. Click **Send**
 5. View the JSON response
-
-[IMAGE_PLACEHOLDER: Postman showing successful request]
 
 ### Verify Dynamic Data
 
@@ -1500,8 +1485,6 @@ nslookup yourdomain.com
 ```
 
 Should return your EC2 IP address.
-
-[IMAGE_PLACEHOLDER: DNS configuration in domain registrar]
 
 ### Step 7.2: Install Certbot
 
@@ -1619,8 +1602,6 @@ Congratulations, all simulated renewals succeeded
 
 Certbot automatically renews certificates before expiration (every 60 days).
 
-[IMAGE_PLACEHOLDER: Browser showing HTTPS with padlock icon]
-
 ---
 
 ## Monitoring and Maintenance
@@ -1726,7 +1707,7 @@ Monitor your usage to stay within free tier:
 
 ### Estimated Costs After Free Tier
 
-- **EC2 t2.micro**: ~$8-10/month
+- **EC2 t3.micro**: ~$8-10/month
 - **Data transfer**: First 15 GB free, then $0.09/GB
 - **Elastic IP**: Free when attached to running instance
 - **Total**: ~$10-15/month for small traffic
@@ -1892,13 +1873,9 @@ These are the skills that distinguish junior developers from those ready for pro
 - ✅ (Optional) Encrypted with SSL/TLS
 - ✅ Production-ready!
 
-[IMAGE_PLACEHOLDER: Final architecture diagram with all components]
-
 ---
 
 *For detailed troubleshooting, backup procedures, and advanced configurations, see the complete [DEPLOYMENT.md](https://github.com/yourusername/profile-api/blob/main/DEPLOYMENT.md) in the repository.*
-
-[IMAGE_PLACEHOLDER: Screenshot of API response from deployed URL]
 
 ---
 
@@ -1946,8 +1923,6 @@ public ResponseEntity<ProfileResponse> getProfile() {
 ```
 
 **Lesson:** Annotations are not decorative—they're instructions to the framework. Missing a single annotation can break functionality entirely.
-
-[IMAGE_PLACEHOLDER: Screenshot showing the error and then the fix side by side]
 
 ---
 
@@ -2203,8 +2178,6 @@ This project serves as a foundation for more complex applications. You can exten
 - Adding request validation with `@Valid` annotations
 - Integrating with message queues (RabbitMQ, Kafka)
 
-[IMAGE_PLACEHOLDER: Diagram showing potential extensions and next steps]
-
 ---
 
 ## Resources
@@ -2220,9 +2193,7 @@ This project serves as a foundation for more complex applications. You can exten
 ## Complete Source Code
 
 The complete source code for this project is available on GitHub:
-[github.com/yourusername/profile-api](https://github.com/yourusername/profile-api)
-
-Live API endpoint: `https://your-app-name.up.railway.app/me`
+[github.com/chideraa-ude/profile-api](https://github.com/chideraa-ude/profile-api)
 
 ---
 
